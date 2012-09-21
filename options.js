@@ -13,7 +13,10 @@ function save_options() {
   //localStorage["favorite_color"] = color;
 
   // Update status to let user know options were saved.
-  var settings = [];
+  var settings = {
+    "keep_path": !document.getElementById("keep_path").checked,
+    "projects": []
+  };
 
   var projectlist = document.querySelectorAll("#projects > li:not(.empty)");
   for (var i = 0; i < projectlist.length; ++i) {
@@ -32,7 +35,7 @@ function save_options() {
       "name": projectlist[i].querySelector(".project_name").value,
       "sites": sites
     };
-    settings.push(project);
+    settings.projects.push(project);
   }
 
   localStorage["settings"] = JSON.stringify(settings);
@@ -47,25 +50,26 @@ function save_options() {
 // Restores select box state to saved value from localStorage.
 function restore_options() {
   var settings = JSON.parse(localStorage["settings"]);
+  console.log(settings);
+  document.getElementById("keep_path").checked = !settings.keep_path;
   var projects = document.getElementById("projects");
-  for (var i = 0; i < settings.length; ++i) {
-    new_project(true);
-    projects.querySelector("li:last-child .project_name").value = settings[i].name;
-    for (var j = 0; j < settings[i].sites.length; ++j) {
+  for (var i = 0; i < settings.projects.length; ++i) {
+    new_project(null, true);
+    projects.querySelector("li:last-child .project_name").value = settings.projects[i].name;
+    for (var j = 0; j < settings.projects[i].sites.length; ++j) {
       var evt = document.createEvent('MouseEvents');
       evt.initMouseEvent("click", true, true, window,
         0, 0, 0, 0, 0, false, false, false, false, 0, null);
-      console.log(settings[i].sites[j]);
       projects.querySelector("li:last-child .new_site_btn").dispatchEvent(evt);
-      projects.querySelector("li:last-child li:last-child .project_custom_site_name").value = settings[i].sites[j].name;
-      projects.querySelector("li:last-child li:last-child select").value = settings[i].sites[j].name;
-      projects.querySelector("li:last-child li:last-child .site_url").value = settings[i].sites[j].url;
-      projects.querySelector("li:last-child li:last-child .site_letter").value = settings[i].sites[j].letter;
+      projects.querySelector("li:last-child li:last-child .project_custom_site_name").value = settings.projects[i].sites[j].name;
+      projects.querySelector("li:last-child li:last-child select").value = settings.projects[i].sites[j].name;
+      projects.querySelector("li:last-child li:last-child .site_url").value = settings.projects[i].sites[j].url;
+      projects.querySelector("li:last-child li:last-child .site_letter").value = settings.projects[i].sites[j].letter;
     }
   }
 }
 
-function new_project(do_not_insert_site) {
+function new_project(event, do_not_insert_site) {
   var tmpl = document.getElementById("new_project_tmpl");
   var projects = document.getElementById("projects");
 
@@ -82,8 +86,6 @@ function new_project(do_not_insert_site) {
   for (var i = 0; i < nodelist.length; ++i) {
     nodelist[i].addEventListener('click', toggle_element);
   }
-
-  console.log(do_not_insert_site);
 
   if (!do_not_insert_site) {
     var evt = document.createEvent('MouseEvents');

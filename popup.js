@@ -26,7 +26,7 @@
 			//chrome.tabs.captureVisibleTab(window.id, )
 			chrome.tabs.update(backgroundPage.currentTabId,
 			{
-				url: this.href + backgroundPage.currentPath
+				url: this.href + (backgroundPage.settings.keep_path ? backgroundPage.currentPath : "")
 			});
 			console.log(this.parentNode.parentNode);
 			this.parentNode.parentNode.querySelector(".active").className = "site";

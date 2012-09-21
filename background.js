@@ -10,6 +10,7 @@ var currentSite = null;
 var currentTabId = null;
 var currentTab = null;
 var currentPath = null;
+var settings = null;
 
 chrome.tabs.onActiveChanged.addListener(changeActiveTab);
 
@@ -21,15 +22,15 @@ function changeActiveTab(tabId, selectInfo) {
 
 // Called when the url of a tab changes.
 function checkForValidUrl(tabId, changeInfo, tab) {
- projects = JSON.parse(localStorage["settings"]);
- for(var i in projects) {
-  for(var j in projects[i].sites) {
-      if(tab.url.indexOf(projects[i].sites[j].url) == 0) {
-        showIcon(tabId, projects[i].sites[j].letter);
-        currentProject = projects[i];
-        currentSite = projects[i].sites[j];
+ settings = JSON.parse(localStorage["settings"]);
+ for(var i in settings.projects) {
+  for(var j in settings.projects[i].sites) {
+      if(tab.url.indexOf(settings.projects[i].sites[j].url) == 0) {
+        showIcon(tabId, settings.projects[i].sites[j].letter);
+        currentProject = settings.projects[i];
+        currentSite = settings.projects[i].sites[j];
         currentTabId = tabId;
-        currentPath = tab.url.substring(projects[i].sites[j].url.length);
+        currentPath = tab.url.substring(settings.projects[i].sites[j].url.length);
       }
     }
   }
