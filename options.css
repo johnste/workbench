@@ -1,0 +1,112 @@
+body {
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: #333333;
+  background-color: #ffffff;
+}
+
+body > .container {
+  margin: 20px;
+}
+
+
+#projects > li.empty {
+  font-style: italic;
+  color: #aaa;
+  visibility: hidden;
+  display: block;
+  height: 0px;
+  padding: 0;
+}
+
+#projects > li.empty:only-child {
+  visibility: visible;
+  height: auto;
+  padding: 10px 20px;
+}
+
+
+#new_project_tmpl, body.options #new_site_tmpl {
+  display: none;
+}
+
+#projects {
+  margin: 0;
+  padding: 0;
+  border-radius: 7px;
+  border: 1px solid #eee;
+  width: 85%;
+}
+
+#projects > li:not(.empty) {
+  display: block;
+  padding: 10px 20px;
+
+  border-bottom: 1px dashed #eee;
+  position: relative;
+}
+
+#projects > li:first-child, #projects > li:nth-child(2) {
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px
+}
+
+#projects > li:last-child {
+  border-bottom: none;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
+
+#projects > li > input {
+  font-size: 18px;
+}
+.toolbar {
+  padding-bottom: 5px;
+}
+
+.toolbar button{
+  float: right;
+}
+
+#projects .sites {
+  display: block;
+  background: #ddd;
+  margin: 0 -20px;
+  padding: 0;
+  box-shadow: inset rgba(0, 0, 0, 0.3) 0px 2px 15px;
+}
+
+#projects .sites li {
+  display: block;
+  padding: 10px 20px;
+  border-bottom: 1px dashed #999;
+  -webkit-transition: opacity 0.5s ease-in-out;
+  opacity: 1;
+}
+
+#projects .sites li:nth-child(2n) {
+  background: rgba(255,255,255,0.3);
+}
+
+#projects .sites li:last-child {
+  border-bottom: none;
+}
+#projects .sites li button {
+  float: right;
+}
+
+#projects .sites li label {
+  display: block;
+  width: 150px;
+  float: left;
+}
+
+#projects > li.deleted, #projects .sites li.deleted {
+  opacity: 0;
+}
+
+.project_custom_site_name {
+  opacity: 0;
+}

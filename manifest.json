@@ -1,0 +1,24 @@
+{
+  "name": "Workbengt",
+  "version": "0.1",
+  "manifest_version": 2,
+  "homepage_url": "http://johnste.github.com/workbengt",
+  "description": "Switch easily between production, development and test sites.",
+  "icons": { 
+           "16": "icons/icon_016.png",
+           "48": "icons/icon_048.png",
+          "128": "icons/icon_128.png" 
+  },
+  "background": {
+    "scripts": ["background.js"]    
+  },
+  "permissions": [
+    "tabs"
+  ],  
+  "page_action": {
+    "default_icon": "icons/wide.png",
+    "default_title": "Switch site",
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html"
+}

@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Workbengt options</title>
+    <link href="form.css" rel="stylesheet" type="text/css">
+    <link href="options.css" rel="stylesheet" type="text/css">
+  </head>
+  <body class="options">
+    <div class="container">
+    	<h1>Workbengt options</h1>
+
+    	<button id="new_project_btn" class="add"><span>Add project</span></button>
+        <button id="save_btn" class="save"><span>Save settings</span></button><span id="status"></span>
+        <h2>Projects</h2>
+    	<ul id="projects">
+            <li class="empty">No projects yet. Add a project by clicking "Add project" above.</li>
+    	</ul>
+      <script src="options.js"></script>
+    	<div id="new_project_tmpl" >
+        <div class="toolbar">
+          <label>Project name</label>
+      		<input type="text" class="project_name" name="project_name" placeholder="Name your project" maxlength="30" size="20"/>
+          <button class="remove_project_btn delete" data-element-name="project"><span><span>Remove project</span></span></button>
+          <button class="new_site_btn add"><span>Add site to project</span></button>
+
+        </div>
+    		<ol class="sites"></ol>
+    	</div>
+    	<div id="new_site_tmpl">
+        <div class="site">
+          <button class="remove_site_btn delete" data-element-name="site"><span><span>Remove site</span></span></button>
+      		<label>Name</label>
+          <select>
+            <option>Acceptance</option>
+            <option>Development</option>
+            <option>Production</option>
+            <option>Testing</option>
+            <option value="">Custom...</option>
+          </select>
+      		<input type="text" name="project_custom_site_name" class="project_custom_site_name" maxlength="30" size="30" placeholder="Some other name" value="Acceptance"/><br/>
+          <label>Base URL</label>
+      		<input type="text" name="project_site_url" class="site_url" maxlength="50" size="40" placeholder="http://example.com"/><br/>
+          <label>Icon letter</label>
+      		<input type="text" name="project_site_abbr" class="site_letter" maxlength="2" size="6" placeholder="A, D, P"/>
+        </div>
+    	</div>
+      <footer>
+      By John Sterling (twitter: @john_ste, github: johnste)
+    </footer>
+    </div>
+
+  </body>
+</html>
+

@@ -1,0 +1,165 @@
+
+label {
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 36px;
+}
+
+input, button, button * {
+
+  -webkit-transition: max-width 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background 0.2s ease-in-out, width 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+select {
+  -webkit-appearance: button;
+  border:;
+}
+
+input, button, select, option {
+  font-size: 15px;
+  padding: 7px 14px;
+  border-radius: 7px;
+  box-shadow: rgba(0,0,0,0.2) 0 2px 10px;
+  text-decoration: none;
+  vertical-align: middle;
+
+}
+
+button, select {
+  border-top: 1px solid #96d1f8;
+  text-shadow: rgba(0,0,0,.4) 0 1px 0;
+  color: white;
+  background: -webkit-linear-gradient(top, #038C8C, #03658C);
+  border-color: #238C8C;
+  position: relative;
+  overflow: hidden;
+}
+
+button > span {
+  padding-left: 14px;
+}
+
+button > span:before, button > span:after {
+  content:"";
+  position:absolute;
+  top:50%;
+  left:0;
+  margin:-8px 0 0 7px;
+  background:#c55500;
+}
+
+button.save {
+  background: -webkit-linear-gradient(top, #038C8C, #03658C);
+}
+
+button.delete {
+  color: #fff;
+  background: -webkit-linear-gradient(top, #F27329, #F24130);
+  border-color: #FF7329;
+}
+
+button.delete > span {
+  padding-left: 4px;
+}
+
+button.delete > span > span{
+  opacity: 0;
+  display: block;
+  max-width: 0;
+  margin-left: 0px;
+  white-space: nowrap;
+}
+
+button.delete:hover > span {
+  padding-left: 14px;
+}
+
+button.delete:hover > span > span {
+  max-width: 113px;
+  margin-left: 14px;
+  opacity: 1;
+}
+
+button.remove_site_btn.delete:hover > span > span {
+  width: 86px;
+}
+
+
+button.add > span:before, button.add > span:after,
+button.delete > span:before, button.delete > span:after {
+  left:6px;
+  width:5px;
+  height:15px;
+  margin-top:-7px;
+  background: #fff;
+}
+
+button.delete > span:before, button.delete > span:after {
+  -webkit-transform:rotate(45deg);
+}
+
+.removed > button.delete > span:before, .removed > button.delete > span:after {
+  -webkit-transform:rotate(0deg);
+}
+
+button.add > span:after,
+button.delete > span:after {
+    left:1px;
+    width:15px;
+    height:5px;
+    margin-top:-2px;
+}
+
+button.save > span:before, button.save > span:after {
+    width:14px;
+    height:9px;
+    margin-top:-4px;
+    background:#fff;
+    /* css3 */
+    -webkit-border-top-left-radius:8px;
+    -webkit-border-bottom-left-radius:8px;
+    -moz-border-radius:6px 0 0 6px;
+    border-radius:6px 0 0 6px;
+    -webkit-transform:rotate(45deg);
+    -ms-transform:rotate(45deg);
+    -moz-transform:rotate(45deg);
+    -o-transform:rotate(45deg);
+    transform:rotate(45deg);
+}
+
+button.save > span:after {
+    left:4px;
+    /* css3 */
+    -webkit-transform:rotate(135deg);
+    -moz-transform:rotate(135deg);
+    -ms-transform:rotate(135deg);
+    -o-transform:rotate(135deg);
+    transform:rotate(135deg);
+}
+
+button.delete:hover {
+ background: -webkit-linear-gradient(top, #FF7329, #FF4130);
+ box-shadow: rgba(255,0,0,0.5) 0 2px 15px;
+}
+
+button:hover {
+  cursor: pointer;
+  background: -webkit-linear-gradient(top, #43ACAC, #4385AC);
+  box-shadow: rgba(3,101,140,0.8) 0 2px 18px;
+}
+
+button.delete:active {
+  cursor: pointer;
+ background: -webkit-linear-gradient(top, #AF3309, #AF0100);
+ box-shadow: rgba(255,0,0,1) 0 2px 28px;
+}
+
+button:active {
+  cursor: pointer;
+  background: -webkit-linear-gradient(top, #036C6C, #03456C);
+  box-shadow: rgba(3,101,140,1.0) 0 1px 28px;
+}
+
+select.custom {
+  background: -webkit-linear-gradient(top, #036C6C, #03456C);
+}

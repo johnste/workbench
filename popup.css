@@ -1,0 +1,105 @@
+body {
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: #333333;
+  background-color: #ffffff;
+  min-width: 200px;
+}
+
+h1 {
+  margin: 10px 0;
+  line-height: 30px;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  border-radius: 7px;
+  border: 1px solid #eee;
+  display: block;
+  background: #ddd;
+}
+
+ul li{
+  display: block;
+  padding: 10px 20px;
+
+  border-bottom: 1px dashed #eee;
+  position: relative;
+}
+
+ul li:nth-child(2n) {
+  background: rgba(255,255,255,0.3);
+}
+
+
+
+ul li.head {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+input, a, button, button * {
+  -webkit-transition: max-width 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background 0.2s ease-in-out, width 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+select {
+  -webkit-appearance: button;
+}
+
+li a {
+  display: block;
+  font-size: 15px;
+  padding: 7px 14px;
+  border-radius: 7px;
+  box-shadow: rgba(0,0,0,0.2) 0 2px 10px;
+  text-decoration: none;
+  vertical-align: middle;
+  border-top: 1px solid #96d1f8;
+  text-shadow: rgba(0,0,0,.4) 0 1px 0;
+  color: white;
+  background: -webkit-linear-gradient(top, #038C8C, #03658C);
+  border-color: #238C8C;
+  position: relative;
+  overflow: hidden;
+  outline: 0;
+}
+
+li a:hover {
+  cursor: pointer;
+  background: -webkit-linear-gradient(top, #43ACAC, #4385AC);
+  box-shadow: rgba(3,101,140,0.8) 0 2px 18px;
+}
+
+li a:active {
+  cursor: pointer;
+  background: -webkit-linear-gradient(top, #036C6C, #03456C);
+  box-shadow: rgba(3,101,140,1.0) 0 1px 28px;
+}
+
+a.active {
+  color: #fff;
+  background: -webkit-linear-gradient(top, #F27329, #F24130);
+  border-color: #FF7329;
+}
+
+a.active:hover {
+  background: -webkit-linear-gradient(top, #FF7329, #FF4130);
+  box-shadow: rgba(255,0,0,0.5) 0 2px 15px;
+}
+
+a.active:active {
+  cursor: pointer;
+  background: -webkit-linear-gradient(top, #AF3309, #AF0100);
+  box-shadow: rgba(255,0,0,1) 0 2px 28px;
+}
+
+a.options {
+  font-style: italic;
+  color: #888;
+  margin-left: 20px;
+}
+
+
