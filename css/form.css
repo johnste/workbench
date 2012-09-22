@@ -10,6 +10,10 @@ input, button, button * {
   -webkit-transition: max-width 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background 0.2s ease-in-out, width 0.2s ease-in-out, opacity 0.2s ease-in-out;
 }
 
+fieldset {
+  border-radius: 7px;
+}
+
 select {
   -webkit-appearance: button;
   border:;
@@ -81,7 +85,7 @@ button.delete:hover > span > span {
 }
 
 button.remove_site_btn.delete:hover > span > span {
-  width: 86px;
+  max-width: 86px;
 }
 
 

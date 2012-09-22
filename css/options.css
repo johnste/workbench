@@ -9,6 +9,7 @@ body {
 
 body > .container {
   margin: 20px;
+  min-width: 700px;
 }
 
 
@@ -37,7 +38,7 @@ body > .container {
   padding: 0;
   border-radius: 7px;
   border: 1px solid #eee;
-  width: 85%;
+
 }
 
 #projects > li:not(.empty) {
