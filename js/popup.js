@@ -14,6 +14,9 @@
 		var a = document.createElement("a");
 		a.href = site.url;
 		a.innerText = site.name;
+		var strong = document.createElement("strong");
+		strong.innerText = site.letter;
+		a.appendChild(strong);
 		a.title = site.url;
 		if(site == backgroundPage.currentSite) {
 			a.className = "site active";
@@ -43,9 +46,10 @@
 		//chrome.tabs.captureVisibleTab(window.id, )
 		chrome.tabs.create(
 		{
-			url: chrome.extension.getURL("options.html")
+			url: chrome.extension.getURL("html/options.html")
 		})
 	});
 
 
 });
+

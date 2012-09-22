@@ -102,4 +102,16 @@ a.options {
   margin-left: 20px;
 }
 
+li a strong {
+  display: block;
+  float: left;
+  text-align: center;
+  min-width: 10px;
+  margin-right: 5px;
+  padding: 0 4px;
+  border-radius: 3px;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(0,0,0,0.2);
+  font-size: 12px;
+}
 

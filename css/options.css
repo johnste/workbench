@@ -9,7 +9,7 @@ body {
 
 body > .container {
   margin: 20px;
-  min-width: 700px;
+  min-width: 760px;
 }
 
 
@@ -37,19 +37,19 @@ body > .container {
   margin: 0;
   padding: 0;
   border-radius: 7px;
-  border: 1px solid #eee;
+  border: 1px solid #ddd;
 
 }
 
 #projects > li:not(.empty) {
   display: block;
-  padding: 10px 20px;
+  padding: 0px 20px 0;
 
-  border-bottom: 1px dashed #eee;
-  position: relative;
+  border-bottom: 1px dashed #ddd;
+
 }
 
-#projects > li:first-child, #projects > li:nth-child(2) {
+#projects > li:first-child, #projects > li:nth-child(2), #projects > li:nth-child(2) .toolbar  {
   border-top-left-radius: 7px;
   border-top-right-radius: 7px
 }
@@ -64,7 +64,22 @@ body > .container {
   font-size: 18px;
 }
 .toolbar {
-  padding-bottom: 5px;
+
+  color: white;
+  font-size: 24px;
+  margin: 0 -20px;
+  padding: 10px 20px;
+  background: #1B4C61;
+  background: -webkit-linear-gradient(top, #1B4C61, #0B3C51);
+}
+
+.toolbar label, .toolbar input {
+  font-size: 20px;
+}
+
+.toolbar label {
+  width: 150px;
+  float: left;
 }
 
 .toolbar button{
@@ -73,7 +88,7 @@ body > .container {
 
 #projects .sites {
   display: block;
-  background: #ddd;
+  background: #eee;
   margin: 0 -20px;
   padding: 0;
   box-shadow: inset rgba(0, 0, 0, 0.3) 0px 2px 15px;
@@ -82,13 +97,13 @@ body > .container {
 #projects .sites li {
   display: block;
   padding: 10px 20px;
-  border-bottom: 1px dashed #999;
+  border-bottom: 1px dashed #ddd;
   -webkit-transition: opacity 0.5s ease-in-out;
   opacity: 1;
 }
 
 #projects .sites li:nth-child(2n) {
-  background: rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.5);
 }
 
 #projects .sites li:last-child {
@@ -96,6 +111,8 @@ body > .container {
 }
 #projects .sites li button {
   float: right;
+  position: relative;
+  z-index: 100;
 }
 
 #projects .sites li label {
@@ -110,4 +127,39 @@ body > .container {
 
 .project_custom_site_name {
   opacity: 0;
+}
+
+div.formrow {
+  position: relative;
+  z-index: 50;
+}
+
+div.tooltip {
+  -webkit-transition: all 0.5s ease-in-out;
+  opacity: 0;
+  position: absolute;
+  color: white;
+  right: -100px;
+  top: 0;
+  border-radius: 3px;
+  padding: 5px;
+  max-width: 240px;
+  background: -webkit-linear-gradient(top, #1B4C61, #0B3C51);
+  box-shadow: rgba(0,0,0,0.6) 0px 0px 30px;
+  font-style: italic;
+}
+input:focus ~ .tooltip {
+
+  opacity: 0.9;
+  box-shadow: rgba(0,0,0,0.6) 20px 20px 30px;
+  right: 2px;
+}
+
+#status, #error {
+  font-weight: bold;
+  margin: 0 10px;
+}
+
+#error {
+  color: red;
 }

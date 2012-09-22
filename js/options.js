@@ -6,15 +6,41 @@ document.addEventListener('DOMContentLoaded', function () {
   restore_options();
 });
 
+function setError(text) {
+  document.getElementById("error").innerHTML = text;
+  var button = document.getElementById("save_btn");
+  button.className = "save error";
+  setTimeout(function() {
+    button.className = "save";
+  }, 750);
+}
+
+/*
+ *http://code.google.com/p/closure-library/source/browse/trunk/closure/goog/string/linkify.js?r=1870
+ */
+function checkURL(value) {
+
+var ENDING_PUNCTUATION_CHARS_ = ':;,\\.?\\[\\]';
+var ACCEPTABLE_URL_CHARS_ =
+    ENDING_PUNCTUATION_CHARS_ + '\\w/~%&=+#-@!';
+var URL_ =
+    '(?:(https?)://+)\\w[' +
+    ACCEPTABLE_URL_CHARS_ + ']*';
+
+    return value.match(URL_);
+}
+
 // Saves options to localStorage.
 function save_options() {
   //var select = document.getElementById("color");
 
   //localStorage["favorite_color"] = color;
 
+  document.getElementById("error").innerHTML = "";
+
   // Update status to let user know options were saved.
   var settings = {
-    "keep_path": !document.getElementById("keep_path").checked,
+    "keep_path": document.getElementById("keep_path").checked,
     "projects": []
   };
 
@@ -28,6 +54,19 @@ function save_options() {
         "letter": sitelist[j].querySelector(".site_letter").value,
         "url": sitelist[j].querySelector(".site_url").value,
       }
+
+      if (site.name.replace(/^\s+|\s+$/g, "") == "" ) {
+        setError("A site name was empty.");
+        return;
+      } else if(site.letter.replace(/^\s+|\s+$/g, "") == "") {
+        setError("A site letter was empty.");
+        return;
+      } else if(!checkURL(site.url)) {
+        console.log(site.url)
+        setError("A site url was empty or incomplete. Don't forget the protocol (http or https).");
+        return;
+      }
+
       sites.push(site);
     }
 
@@ -35,6 +74,11 @@ function save_options() {
       "name": projectlist[i].querySelector(".project_name").value,
       "sites": sites
     };
+
+    if(project.name.replace(/^\s+|\s+$/g, "") == "") {
+      setError("A project name was empty.");
+      return;
+    }
     settings.projects.push(project);
   }
 
@@ -51,7 +95,7 @@ function save_options() {
 function restore_options() {
   var settings = JSON.parse(localStorage["settings"]);
   console.log(settings);
-  document.getElementById("keep_path").checked = !settings.keep_path;
+  document.getElementById("keep_path").checked = settings.keep_path;
   var projects = document.getElementById("projects");
   for (var i = 0; i < settings.projects.length; ++i) {
     new_project(null, true);
@@ -61,8 +105,27 @@ function restore_options() {
       evt.initMouseEvent("click", true, true, window,
         0, 0, 0, 0, 0, false, false, false, false, 0, null);
       projects.querySelector("li:last-child .new_site_btn").dispatchEvent(evt);
+
+
+      var optionlist = projects.querySelector("li:last-child li:last-child select").getElementsByTagName("option");
+      var found = false;
+      for (var k = 0; k < optionlist.length; ++k) {
+        if(optionlist[k].value == settings.projects[i].sites[j].name) {
+          found = true;
+          break;
+        }
+      }
+
+      if(!found) {
+        projects.querySelector("li:last-child li:last-child select").value = "";
+        projects.querySelector("li:last-child li:last-child .project_custom_site_name").setAttribute("style", "opacity: 1");
+        projects.querySelector("li:last-child li:last-child select").className = "custom";
+      } else {
+        projects.querySelector("li:last-child li:last-child select").value = settings.projects[i].sites[j].name;
+      }
+
       projects.querySelector("li:last-child li:last-child .project_custom_site_name").value = settings.projects[i].sites[j].name;
-      projects.querySelector("li:last-child li:last-child select").value = settings.projects[i].sites[j].name;
+
       projects.querySelector("li:last-child li:last-child .site_url").value = settings.projects[i].sites[j].url;
       projects.querySelector("li:last-child li:last-child .site_letter").value = settings.projects[i].sites[j].letter;
     }
@@ -84,7 +147,7 @@ function new_project(event, do_not_insert_site) {
 
   var nodelist = projects.querySelectorAll(".remove_project_btn");
   for (var i = 0; i < nodelist.length; ++i) {
-    nodelist[i].addEventListener('click', toggle_element);
+    nodelist[i].addEventListener('click', remove_element_delayed);
   }
 
   if (!do_not_insert_site) {
@@ -113,13 +176,12 @@ function new_site() {
 
   var nodelist = projects.querySelectorAll(".remove_site_btn");
   for (var i = 0; i < nodelist.length; ++i) {
-    nodelist[i].addEventListener('click', toggle_element);
+    nodelist[i].addEventListener('click', remove_element_delayed);
   }
 }
 
-function toggle_element() {
+function remove_element_delayed() {
   remove_delayed(this.parentNode.parentNode);
-  this.setAttribute('data-default', this.innerHTML);
 }
 
 function remove_delayed(node_to_remove) {
@@ -132,13 +194,24 @@ function remove_delayed(node_to_remove) {
 
 function show_textarea_if_custom() {
   var textfield = this.parentNode.querySelector('.project_custom_site_name');
-  textfield.value = this.value;
 
   if (this.value == "") {
     this.className = "custom";
+    var customvalue = textfield.getAttribute('data-customname');
+    if(customvalue != "") {
+      textfield.value = customvalue;
+    } else {
+      textfield.value = this.value;
+    }
     textfield.setAttribute('style', 'opacity: 1');
   } else {
+    if(this.className == "custom") {
+      textfield.setAttribute('data-customname', textfield.value);
+    }
     textfield.setAttribute('style', 'opacity: 0');
     this.className = "";
+    textfield.value = this.value;
   }
+
+
 }

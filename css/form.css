@@ -12,11 +12,11 @@ input, button, button * {
 
 fieldset {
   border-radius: 7px;
+  border: 1px solid #ddd;
 }
 
 select {
   -webkit-appearance: button;
-  border:;
 }
 
 input, button, select, option {
@@ -152,10 +152,11 @@ button:hover {
   box-shadow: rgba(3,101,140,0.8) 0 2px 18px;
 }
 
-button.delete:active {
-  cursor: pointer;
+button.delete:active, button.save.error  {
+ cursor: pointer;
  background: -webkit-linear-gradient(top, #AF3309, #AF0100);
  box-shadow: rgba(255,0,0,1) 0 2px 28px;
+ border-color: #FF7329;
 }
 
 button:active {
@@ -167,3 +168,5 @@ button:active {
 select.custom {
   background: -webkit-linear-gradient(top, #036C6C, #03456C);
 }
+
+

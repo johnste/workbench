@@ -47,22 +47,23 @@ function showIcon(tabId, letter) {
   var context = canvas.getContext('2d');
 
   gradient = context.createLinearGradient(0, 0, 0, 19);
-  gradient.addColorStop(0,"rgb(242,115,41)");  //start from blue
-  gradient.addColorStop(1,"rgb(242,65,48)"); //end to green
+  gradient.addColorStop(0,"rgb(242,115,41)");
+  gradient.addColorStop(1,"rgb(242,65,48)");
 
-  /*context.fillStyle = "rgb(242,65,48)";*/
+
   context.fillStyle = gradient;
   context.fillRect(1,0,17,19);
   context.fillRect(0,1,19,17);
 
-
-  context.font =  "bold 18px arial";
+  var fontsize = 12;
+  var offset = 2;
+  context.font =  'bold '+fontsize+'px "Helvetica Neue", Helvetica, Arial, sans-serif';
 
   context.textAlign = "center";
   context.textBaseline = "top";
 
   context.fillStyle = "white";
-  context.fillText(letter, 10, 0);
+  context.fillText(letter, 10, offset);
 
   var imageData = context.getImageData(0, 0, 19, 19);
   chrome.pageAction.setIcon({

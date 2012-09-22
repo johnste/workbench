@@ -2,26 +2,24 @@
 <html>
   <head>
     <title>Workbengt options</title>
-    <link href="form.css" rel="stylesheet" type="text/css">
-    <link href="options.css" rel="stylesheet" type="text/css">
+    <link href="/css/form.css" rel="stylesheet" type="text/css">
+    <link href="/css/options.css" rel="stylesheet" type="text/css">
   </head>
   <body class="options">
     <div class="container">
     	<h1>Workbengt options</h1>
 
     	<button id="new_project_btn" class="add"><span>Add project</span></button>
-        <button id="save_btn" class="save"><span>Save settings</span></button><span id="status"></span>
-
-<h2>General options</h2>
-<fieldset>
-  <input type="checkbox" value="true" id="keep_path"/><label for="keep_path">Don't keep path when switching between sites.</label>
-</fieldset>
-
-        <h2>Manage projects</h2>
+        <button id="save_btn" class="save"><span>Save settings</span></button><span id="status"></span><span id="error"></span>
+      <h2>Preferences</h2>
+      <fieldset>
+        <input type="checkbox" value="true" id="keep_path"/><label for="keep_path">Keep path when switching between sites.</label>
+      </fieldset>
+      <h2>Manage projects</h2>
     	<ul id="projects">
             <li class="empty">No projects yet. Add a project by clicking "Add project" above.</li>
     	</ul>
-      <script src="options.js"></script>
+      <script src="/js/options.js"></script>
     	<div id="new_project_tmpl" >
         <div class="toolbar">
           <label>Project name</label>
@@ -35,23 +33,25 @@
     	<div id="new_site_tmpl">
         <div class="site">
           <button class="remove_site_btn delete" data-element-name="site"><span><span>Remove site</span></span></button>
-      		<label>Name</label>
+      		<div class="formrow"><label>Site name</label>
           <select>
             <option>Acceptance</option>
             <option>Development</option>
+            <option>Localhost</option>
             <option>Production</option>
             <option>Testing</option>
             <option value="">Custom...</option>
           </select>
-      		<input type="text" name="project_custom_site_name" class="project_custom_site_name" maxlength="30" size="30" placeholder="Some other name" value="Acceptance"/><br/>
-          <label>Base URL</label>
-      		<input type="text" name="project_site_url" class="site_url" maxlength="50" size="40" placeholder="http://example.com"/><br/>
-          <label>Icon letter</label>
-      		<input type="text" name="project_site_abbr" class="site_letter" maxlength="2" size="6" placeholder="A, D, P"/>
+      		<input type="text" name="project_custom_site_name" class="project_custom_site_name" maxlength="30" size="30" placeholder="Some other name" value="Acceptance"/></div>
+          <div class="formrow"><label>Base URL</label>
+      		<input type="text" name="project_site_url" class="site_url" maxlength="180" size="65" placeholder="http://example.com/site/"/><div class="tooltip">The site url you want to match. Remember to be consistent ending with slashes or not when "Keep path when switching" option is active.</div></div>
+          <div class="formrow"><label>Icon letters</label>
+      		<input type="text" name="project_site_abbr" class="site_letter" maxlength="2" size="6" placeholder="A, D, P"/><div class="tooltip">Up to 2 letters displayed in Omnibar (address bar) icon when site is active. </div></div>
         </div>
     	</div>
       <footer>
-      By John Sterling (twitter: @john_ste, github: johnste)
+        <h2>Credits</h2>
+        By John Sterling (twitter: @john_ste, github: johnste)
     </footer>
     </div>
 
