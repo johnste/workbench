@@ -10,6 +10,7 @@ body {
 body > .container {
   margin: 20px;
   min-width: 760px;
+  max-width: 960px;
 }
 
 
@@ -74,7 +75,7 @@ body > .container {
 }
 
 .toolbar label, .toolbar input {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .toolbar label {
@@ -131,6 +132,7 @@ body > .container {
 
 div.formrow {
   position: relative;
+  display: block;
   z-index: 50;
 }
 
@@ -163,3 +165,36 @@ input:focus ~ .tooltip {
 #error {
   color: red;
 }
+
+.logo{
+  overflow: hidden;
+  margin-right: 10px;
+  float: left;
+  width: 32px;
+  height: 32px;
+  background: -webkit-linear-gradient(top, #038C8C, #03658C);
+  border-radius: 7px;
+  font-size: 22.5px;
+  text-align: center;
+  line-height: 32px;
+  text-indent: -2px;
+  font: "Helvetica Neue";
+  font-weight: bold;
+  background: -webkit-linear-gradient(top, #F8792F, #F24130);
+  color: #fff;
+  box-shadow: rgba(0,0,0,0.2) 0px 0px 10px;
+  text-shadow: rgba(0,0,0,0.5) 0px 0px 15px;
+  position: relative;
+}
+
+footer {
+  line-height: 32px;
+}
+
+
+
+
+
+
+
+
