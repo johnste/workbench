@@ -1,6 +1,6 @@
 {
   "name": "Workbench",
-  "version": "0.1",
+  "version": "0.1.1",
   "manifest_version": 2,
   "homepage_url": "http://johnste.github.com/workbench",
   "description": "Switch easily between production, development and test sites.",
@@ -16,7 +16,7 @@
     "tabs"
   ],
   "page_action": {
-    "default_icon": "icons/wide.png",
+    "default_icon": "icons/icon_048.png",
     "default_title": "Switch site",
     "default_popup": "html/popup.html"
   },
