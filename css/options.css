@@ -173,7 +173,7 @@ input:focus ~ .tooltip {
   width: 32px;
   height: 32px;
   background: -webkit-linear-gradient(top, #038C8C, #03658C);
-  border-radius: 7px;
+  border-radius: 4px;
   font-size: 22.5px;
   text-align: center;
   line-height: 32px;
