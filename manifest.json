@@ -13,7 +13,9 @@
     "scripts": ["js/background.js"]
   },
   "permissions": [
-    "tabs"
+    "tabs",
+    "cookies",
+    "<all_urls>"
   ],
   "page_action": {
     "default_icon": "icons/icon_048.png",

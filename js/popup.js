@@ -1,6 +1,5 @@
  document.addEventListener('DOMContentLoaded', function () {
 
-
 	var backgroundPage = chrome.extension.getBackgroundPage();
 
 	var sites = [];
@@ -14,8 +13,9 @@
 		var a = document.createElement("a");
 		a.href = site.url;
 		a.innerText = site.name;
+		a.title = site.url;
 		var strong = document.createElement("strong");
-		strong.innerText = site.letter;
+		strong.innerText = site.abbreviation;
 		a.appendChild(strong);
 		a.title = site.url;
 		if(site == backgroundPage.currentSite) {
@@ -24,16 +24,38 @@
 			a.className = "site";
 		}
 
-		a.addEventListener('click', function(){
+		a.addEventListener('click', function(event){
 			//var a = this;
 			//chrome.tabs.captureVisibleTab(window.id, )
-			chrome.tabs.update(backgroundPage.currentTabId,
-			{
-				url: this.href + (backgroundPage.settings.keep_path ? backgroundPage.currentPath : "")
-			});
-			console.log(this.parentNode.parentNode);
+
+			/*if ( backgroundPage.currentCookies.length > 0) {
+				for(var i = 0; i < backgroundPage.currentCookies.length; i++) {
+					var cookie = backgroundPage.currentCookies[i];
+					var newCookie = {
+						url: this.href,
+						name: cookie.name,
+						value: cookie.value
+					};
+					console.log(cookie, newCookie);
+					chrome.cookies.set(newCookie, function(c) {
+						console.log(chrome.runtime.lastError);
+					});
+				}
+
+			}*/
+
+			if(event.button == 0) {
+				chrome.tabs.update(backgroundPage.currentTabId,
+				{
+					url: this.href + (backgroundPage.settings.options.keepPath ? backgroundPage.currentPath : "")
+				});
+			}
+
+
 			this.parentNode.parentNode.querySelector(".active").className = "site";
 			this.className = "site active";
+			setTimeout(function(){window.close();}, 350);
+
 		});
 
 		var li = document.createElement("li");

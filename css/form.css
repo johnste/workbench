@@ -67,6 +67,7 @@ button.delete {
 
 button.delete > span {
   padding-left: 4px;
+  display: block;
 }
 
 button.delete > span > span{
@@ -172,4 +173,6 @@ select.custom {
   background: -webkit-linear-gradient(top, #036C6C, #03456C);
 }
 
-
+input.ng-dirty.ng-invalid {
+  background-color: rgba(255, 164, 164, 1);
+}
