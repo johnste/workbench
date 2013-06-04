@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="LocalStorageModule" ng-csp>
+<html ng-app="workbench" ng-csp>
   <head>
     <title>Workbench options</title>
     <link href="/css/form.css" rel="stylesheet" type="text/css">
@@ -7,58 +7,24 @@
 
   </head>
   <body class="options">
-    <div class="container" ng-controller="ProjectCtrl">
-    	<h1>Workbench options</h1>
-
-    	<button id="new_project_btn" class="add" ng-click="addProject()"><span>Add project</span></button>
+    <div class="container">
+    	<h1><a href="#projects">Workbench options</a></h1>
+      <!--
         <button id="save_btn" class="save" ng-click="saveSettings()"><span>Save settings</span></button><span id="status"></span><span id="error"></span>
-      <h2>Preferences</h2>
-      <fieldset>
-        <input type="checkbox" ng-model="keepPath" value="true" id="keep_path"/><label for="keep_path">Keep path when switching between sites.</label>
-      </fieldset>
-      <h2>Manage projects</h2>
-    	<ul id="projects">
-        <li class="empty" ng-view ng-model="projects" ng-hide="projects.length">No projects yet. Add a project by clicking "Add project" above.</li>
-        <li ng-repeat="project in projects">
-          <div class="toolbar" ng-class="{'no-children':project.sites.length == 0}">
-            <label>Project name</label>
-            <input type="text" class="project_name" name="project_name" placeholder="Name your project" maxlength="30" size="20" ng-model="project.name" required/>
-            <button class="remove_project_btn delete" data-element-name="project" ng-click="delProject(project)"><span><span>Remove project</span></span></button>
-            <button class="new_site_btn add" ng-click="addSite(project)"><span>Add site to project</span></button>
-          </div>
-          <ol class="sites">
-            <li ng-repeat="site in project.sites">
-              <div class="site">
-                <button class="remove_site_btn delete" data-element-name="site" ng-click="delSite(project, site)"><span><span>Remove site</span></span></button>
-                <div class="formrow"><label>Site name</label>
-                <select ng-model="site.predefinedName" ng-change="updateSiteName(project, site)">
-                  <option>Acceptance</option>
-                  <option>Development</option>
-                  <option>Localhost</option>
-                  <option>Production</option>
-                  <option>Testing</option>
-                  <option>Staging</option>
-                  <option value="">Custom...</option>
-                </select>
-                <input type="text" name="project_custom_site_name" class="project_custom_site_name" maxlength="30" size="30" placeholder="Some other name" ng-model="site.name" ng-show="site.predefinedName == ''" required/></div>
-                <div class="formrow"><label>Base URL</label>
-                <input type="url" name="project_site_url" class="site_url" maxlength="180" size="65" placeholder="http://example.com/site/" ng-model="site.url" required/><div class="tooltip">The site url you want to match. Remember to be consistent ending with slashes or not when "Keep path when switching" option is active.</div></div>
-                <div class="formrow"><label>Abbreviation</label>
-                <input type="text" name="project_site_abbr" class="site_letter" maxlength="2" size="6" placeholder="X" ng-model="site.abbreviation" required/><div class="tooltip">Up to 2 letters displayed in Omnibar (address bar) icon when site is active. </div></div>
-              </div>
-            </li>
-          </ol>
-        </li>
-    	</ul>
-      <script type="text/javascript" src="/js/angular.js"></script>
-      <script type="text/javascript" src="/js/localStorageModule.js"></script>
-      <script type="text/javascript" src="/js/form.js"></script>
+      -->
+
+      <div ng-view></div>
+
+      <script type="text/javascript" src="/js/lib/angular.js"></script>
+      <script type="text/javascript" src="/js/lib/localStorageModule.js"></script>
+      <script type="text/javascript" src="/js/guid.js"></script>
+      <script type="text/javascript" src="/js/app.js"></script>
+      <script type="text/javascript" src="/js/controllers.js"></script>
 
       <footer>
-        <h2>Credits</h2>
         <div class="logo">Wb</div>
         By John Sterling (twitter: <a href="https://twitter.com/john_ste">@john_ste</a>, github: <a href="https://github.com/johnste">johnste</a>)
-    </footer>
+      </footer>
 
     </div>
 

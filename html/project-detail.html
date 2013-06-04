@@ -1,0 +1,62 @@
+<h2>Edit project <em>{{project.name}}</em></h2>
+<h3>Settings</h3>
+<form name="form" ng-model="project" class="toolbar">
+  <div class="preferences">
+    <div>
+      <label>Name*</label>
+      <input type="text" maxlength="40" size="30" placeholder="Name required" ng-model="project.name" required/><br/>
+    </div><div>
+      <label>Keep sub path</label>
+      <input type="checkbox" name="" ng-model="project.keepPath"/><br/>
+    </div><div>
+      <label>Cookie migration</label>
+      <input type="checkbox" name="" ng-model="project.copyCookies"/><br/>
+    </div>
+  </div>
+
+  <h3>Sites</h3>
+  <ul id="sites" class="item-list">
+    <li class="empty" ng-model="sites" ng-hide="project.sites.length">
+      No sites yet. Add one by clicking "Add site".
+    </li>
+    <li ng-repeat="site in project.sites">
+      <!--<input type="checkbox" ng-model="site.selected" ng-change="updateSelected()"/>-->
+
+      <div class="formrow"><label>Site name*</label>
+        <select ng-model="site.predefinedName" ng-change="updateSiteName(site)">
+          <option>Acceptance</option>
+          <option>Development</option>
+          <option>Localhost</option>
+          <option>Production</option>
+          <option>Testing</option>
+          <option>Staging</option>
+          <option value="">Custom...</option>
+        </select>
+        <input type="text"  maxlength="30" size="30" placeholder="Some other name" ng-model="site.name" ng-show="site.predefinedName == ''" required/>
+      </div>
+
+      <div class="formrow"><label>Base URL*</label>
+        <input type="url"  maxlength="180" size="65" placeholder="http://example.org/site/" ng-model="site.url" required/>
+        <div class="tooltip">The site URL you want to match. Remember to be consistent ending with slashes or not when "Keep sub path" option is active.</div>
+      </div>
+
+      <div class="formrow"><label>Abbreviation*</label>
+        <input type="text" maxlength="2" size="6" placeholder="X" ng-model="site.abbreviation" required/>
+        <div class="tooltip">Up to 2 letters displayed in Omnibar (address bar) icon when site is active.</div>
+      </div>
+
+      <div class="formrow" ng-class="{'disabled':!(project.copyCookies)}"><label>Cookie URL</label>
+        <input type="url"  maxlength="180" size="65" ng-placeholder="" placeholder="http://example.org/" ng-model="site.cookieURL" />
+        <div class="tooltip">The cookie URL you want to move cookies from/to. Leave blank if same as base URL or if cookie migration is disabled.</div>
+      </div>
+    </li>
+  </ul>
+
+<button class="add" ng-click="addSite()"><span>Add site</span></button>
+<!--<button class="delete disabled" ng-click="deleteSites()" ng-class="{'disabled':!selected}"><span>Delete sites</span></button>-->
+
+<button class="save disabled" ng-click="saveProject()" ng-class="{'disabled':!(form.$valid && !form.$pristine)}"><span>Save project</span></button>
+
+<button class="home" ng-click="goBack()"><span>Home</span></button>
+
+</form>

@@ -1,3 +1,4 @@
+/* Options page form style */
 
 label {
   font-size: 15px;
@@ -6,7 +7,6 @@ label {
 }
 
 input, button, button * {
-
   -webkit-transition: max-width 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background 0.2s ease-in-out, width 0.2s ease-in-out, opacity 0.2s ease-in-out;
 }
 
@@ -42,8 +42,13 @@ button, select {
   overflow: hidden;
 }
 
+button.disabled {
+  opacity: 0.2;
+}
+
 button > span {
   padding-left: 14px;
+  display: block;
 }
 
 button > span:before, button > span:after {
@@ -63,11 +68,6 @@ button.delete {
   color: #fff;
   background: -webkit-linear-gradient(top, #F27329, #F24130);
   border-color: #FF7329;
-}
-
-button.delete > span {
-  padding-left: 4px;
-  display: block;
 }
 
 button.delete > span > span{
@@ -118,6 +118,7 @@ button.delete > span:after {
     margin-top:-2px;
 }
 
+/* http://nicolasgallagher.com/pure-css-gui-icons/ */
 button.save > span:before, button.save > span:after {
     width:14px;
     height:9px;
@@ -145,6 +146,42 @@ button.save > span:after {
     transform:rotate(135deg);
 }
 
+
+button.home span:before {
+    left:1px;
+    border-style:solid;
+    border-color:transparent;
+    border-width:8px 7px;
+    border-bottom-color:#fff;
+    margin-top:-16px;
+    background:transparent;
+}
+
+button.home span:after {
+    left:3px;
+    width:2px;
+    height:4px;
+    border-style:solid;
+    border-color:#fff #fff transparent;
+    border-width:3px 4px 0;
+    margin-top:0;
+    background:transparent;
+}
+
+button.home span:hover:before,
+button.home span:focus:before,
+button.home span:active:before {
+    border-bottom-color:#fff;
+    background:transparent;
+}
+
+button.home span:hover:after,
+button.home span:focus:after,
+button.home span:active:after {
+    border-color:#fff #fff transparent;
+}
+
+
 button.delete:hover {
  background: -webkit-linear-gradient(top, #FF7329, #FF4130);
  box-shadow: rgba(255,0,0,0.5) 0 2px 15px;
@@ -154,6 +191,10 @@ button:hover {
   cursor: pointer;
   background: -webkit-linear-gradient(top, #43ACAC, #4385AC);
   box-shadow: rgba(3,101,140,0.8) 0 2px 18px;
+}
+
+button.disabled:hover {
+  cursor: default;
 }
 
 button.delete:active, button.save.error  {
@@ -174,5 +215,5 @@ select.custom {
 }
 
 input.ng-dirty.ng-invalid {
-  background-color: rgba(255, 164, 164, 1);
+  background-color: rgba(255, 164, 164, 0.4);
 }

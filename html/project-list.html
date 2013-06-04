@@ -1,0 +1,13 @@
+
+<h2>Projects</h2>
+<ul id="projects" class="item-list">
+  <li class="empty" ng-model="projects" ng-hide="projects.length">
+    No projects yet. Add one by clicking "Add project".
+  </li>
+  <li ng-repeat="project in projects">
+    <input type="checkbox" ng-model="project.selected" ng-change="updateSelected()"/>
+    <a href="#projects/{{project.id}}">{{project.name || "Empty project"}} </a>
+  </li>
+</ul>
+<button class="add" ng-click="addProject()"><span>Add project</span></button>
+<button class="delete disabled" ng-click="deleteProjects()" ng-class="{'disabled':!selected}"><span>Delete projects</span></button>

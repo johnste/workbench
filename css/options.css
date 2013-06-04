@@ -1,3 +1,4 @@
+/* Options page style */
 body {
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -8,134 +9,127 @@ body {
 }
 
 body > .container {
-  margin: 20px;
+  margin: 0 20px 20px;
   min-width: 760px;
   max-width: 960px;
 }
 
+h1 {
+  margin: 0 -20px;
+  padding: 20px 20px;
+  background: #1B4C61;
+  background: -webkit-linear-gradient(top, #1B4C61, #0B3C51);
+  box-shadow: 0px 5px 5px rgba(0,0,0,0.1);
+  border-bottom-right-radius: 7px
+}
 
-#projects > li.empty {
+h1 a {
+  color: white;
+  font-size: 24px;
+  text-decoration: none;
+}
+
+h2 em {
+  color: #1B4C61;
+}
+
+.preferences {
+  margin: 20px 0 20px;
+  padding: 20px 0px;
+  border-radius: 7px;
+
+  border: 1px solid #ddd;
+  list-style: none;
+  overflow: auto;
+}
+
+.item-list {
+  margin: 20px 0 20px;
+  padding: 0px 0px;
+  border-radius: 7px;
+
+  border: 1px solid #ddd;
+  list-style: none;
+}
+
+.item-list > li {
+  font-size: 110%;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.item-list > li:last-child {
+ border-bottom: none;
+}
+
+.item-list > li.empty {
   font-style: italic;
   color: #aaa;
   display: block;
   height: auto;
-  padding: 10px 20px;
-}
-
-#new_project_tmpl, body.options #new_site_tmpl {
-  display: none;
-}
-
-#projects {
-  margin: 0;
-  padding: 0;
-  border-radius: 7px;
-  border: 1px solid #ddd;
 
 }
 
-#projects > li:not(.empty) {
-  display: block;
-  padding: 0px 20px 0;
+.item-list > li a {
+  color: #1b4c61;
+}
 
-  border-bottom: 1px dashed #ddd;
+.item-list > li  {
+
 
 }
 
-#projects > li:first-child, #projects > li:nth-child(2), #projects > li:nth-child(2) .toolbar  {
-  border-top-left-radius: 7px;
-  border-top-right-radius: 7px
-}
-
-#projects > li:last-child .toolbar.no-children  {
-  border-bottom-left-radius: 7px;
-  border-bottom-right-radius: 7px
-}
-
-#projects > li:last-child {
-  border-bottom: none;
-  border-bottom-left-radius: 7px;
-  border-bottom-right-radius: 7px;
-}
-
-#projects > li > input {
-  font-size: 18px;
-}
-.toolbar {
-
-  color: white;
-  font-size: 24px;
-  margin: 0 -20px;
-  padding: 10px 20px;
-  background: #1B4C61;
-  background: -webkit-linear-gradient(top, #1B4C61, #0B3C51);
-}
-
-.toolbar label, .toolbar input {
-  font-size: 18px;
-}
-
-.toolbar label {
-  width: 150px;
+.item-list > li > input {
   float: left;
-}
-
-.toolbar button{
-  float: right;
-}
-
-#projects .sites {
-  display: block;
-  background: #eee;
-  margin: 0 -20px;
-  padding: 0;
-  box-shadow: inset rgba(0, 0, 0, 0.3) 0px 2px 15px;
-}
-
-#projects .sites li {
-  display: block;
-  padding: 10px 20px;
-  border-bottom: 1px dashed #ddd;
-  -webkit-transition: opacity 0.5s ease-in-out;
-  opacity: 1;
-}
-
-#projects .sites li:nth-child(2n) {
-  background: rgba(255,255,255,0.5);
-}
-
-#projects .sites li:last-child {
-  border-bottom: none;
-}
-#projects .sites li button {
-  float: right;
-  position: relative;
-  z-index: 100;
-}
-
-#projects .sites li label {
-  display: block;
-  width: 150px;
-  float: left;
-}
-
-#projects > li.deleted, #projects .sites li.deleted {
-  opacity: 0;
+  padding-left: 10px;
+  vertical-align: middle;
+  width: 100px;
 }
 
 div.formrow {
+  display: table-row;
+  height: 50px;
   position: relative;
-  display: block;
-  z-index: 50;
+}
+
+div.formrow label {
+  display: table-cell;
+}
+
+div.formrow.disabled {
+  opacity: 1;
+  font-style: italic;
+}
+
+div.formrow.disabled:after{
+  font-size: 70%;
+  font-weight: normal;
+  margin-left: 10px;
+  content: "- disabled in project settings";
+}
+.preferences > div {
+  display: table-row;
+}
+
+.item-list .formrow label,
+.preferences label {
+  display: table-cell;
+  width: 150px;
+  padding: 0 0 0 20px ;
+  clear: left;
+}
+
+.preferences input {
+
 }
 
 div.tooltip {
   -webkit-transition: all 0.5s ease-in-out;
   opacity: 0;
   position: absolute;
+  float: right;
   color: white;
   right: -100px;
-  top: 0;
   border-radius: 3px;
   padding: 5px;
   max-width: 240px;
@@ -143,12 +137,13 @@ div.tooltip {
   box-shadow: rgba(0,0,0,0.6) 0px 0px 30px;
   font-style: italic;
 }
-input:focus ~ .tooltip {
 
+input:focus ~ .tooltip {
   opacity: 0.9;
   box-shadow: rgba(0,0,0,0.6) 20px 20px 30px;
   right: 2px;
 }
+
 
 #status, #error {
   font-weight: bold;
@@ -181,5 +176,7 @@ input:focus ~ .tooltip {
 }
 
 footer {
+  margin: 30px 0 5px;
   line-height: 32px;
+  width: 50%;
 }
